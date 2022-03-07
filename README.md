@@ -9,3 +9,5 @@ This is just a web site made with
 - ssl(ed) by letsencrypt.
 
 Thanks all.
+
+https://www.lootplaces.com/
