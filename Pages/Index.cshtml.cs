@@ -7,6 +7,8 @@ namespace LootPlacesWeb.Pages
     {
         private readonly ILogger<IndexModel> _logger;
 
+        public string Test = "B";
+
         public IndexModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
@@ -14,7 +16,7 @@ namespace LootPlacesWeb.Pages
 
         public void OnGet()
         {
-
+            Test = "D";
         }
     }
 }
