@@ -10,7 +10,7 @@ namespace JsonPath
 
         public ReadonlyFileDataProvider(string basePath = null)
         {
-            _basePath = basePath ?? Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\i18n");
+            _basePath = basePath ?? Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/i18n");
         }
 
         public string FilePath(string id)
@@ -31,6 +31,7 @@ namespace JsonPath
         public string GetData(string id)
         {
             var path = FilePath(id);
+            Console.WriteLine("##### " + path);
             if (!File.Exists(path)) {
                 return null;
             }
