@@ -1,0 +1,997 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="my-3">
+            Loot Places are the playing fields for Adventurers. They form the Metaverse, the infinite garden, the limitless world for Punks, Apes, Pengus, Rocks, Chads, and OGs.
+        </div>
+    </div>
+
+    <div class="col-12">
+        <div class="my-3">
+            Each Place NFT is a website (a domain, a subdomain or URI) with selected properties. The NFT assigns your individual set of properties to the website.
+        </div>
+    </div>
+</div>
+
+<div class="row justify-content-around">
+    <div class="col-4 col-md-2">
+        <img src="~/images/LootPlaces-bankless.png" class="img-fluid" alt="bankless">
+    </div>
+    <div class="col-4 col-md-2">
+        <img src="~/images/LootPlaces-fortune.png" class="img-fluid" alt="fortune">
+    </div>
+    <div class="col-4 col-md-2">
+        <img src="~/images/LootPlaces-loganpaul.png" class="img-fluid" alt="loganpaul">
+    </div>
+    <div class="col-4 col-md-2">
+        <img src="~/images/LootPlaces-reddit-ethereum.png" class="img-fluid" alt="reddit-ethereum">
+    </div>
+    <div class="col-4 col-md-2">
+        <img src="~/images/LootPlaces-twitter-jack.png" class="img-fluid" alt="twitter-jack">
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="my-3">
+            Loot Places can be claimed from a fair <a href='https://etherscan.io/address/0x6c8cca9dbbfb8172415dfacf722d3a1289e00bc5#writeContract'>smart contract</a>. When you claim a Place NFT, you become the owner or co-owner of the social layer on that website, be it tesla.com, facebook.com, worldbank.com or even banklesshq.com. As owner you have special rights on this website. You will be able to mine treasures and experience adventures. You will see a world that was hidden before.
+        </div>
+    </div>
+
+    <div class="col-12">
+        <div class="my-3">
+            There are #8000 Places (for Adventurers) in the Metaverse collectible.
+            They can be minted directly <a href='https://etherscan.io/address/0x6c8cca9dbbfb8172415dfacf722d3a1289e00bc5#writeContract'>on Etherscan</a>, without any further requirements.
+            Or you can claim one using the button below.
+            Everyone is invited, not just Loot owners.
+        </div>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-5">
+        <div id="iClaimBox" style="margin: 1.5rem 0; padding: 0;" class="alert">
+            <button class="btn btn-large btn-block btn-primary" style="margin: -1px; width: calc(100% + 2px);" disabled>
+                <span class="caption">@Model.I18n.String(path: "claim/startBtnCaption")</span>
+            </button>
+            <div class="infoBox d-flex">
+                <span class="spinner spinner-border spinner-border-sm mb-1 ml-2 d-none" style="border-left-color: transparent; margin-top: 0.75rem;" role="status" aria-hidden="true"></span>
+                <span class="infoText my-2 mx-2 d-none"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="my-1">
+            (While in times of high gas cost and solid ETH prices transaction fees are sufficient to protect from mass minting, leaving the protection to transaction fees is not a good design.
+            Therefore there is a nominal charge of ETH 0.005 to protect from mass minting just in case transaction fees go down unexpectedly. Currently, the nominal charge is less than the transaction cost, which should be OK.)
+        </div>
+    </div>
+</div>
+
+<div class="row justify-content-around">
+    <div class="my-4 col-12 col-md-10 col-lg-8">
+        <img src="~/images/sec-reclaim-rally-800.png" class="img-fluid" alt="bankless">
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="my-2">
+            You can already meet people on web pages. Very soon you will be able to walk with your Ape, Punk or other PFP in the infinite garden and meet with the community. You will be recognized as the rightful owner of your original NFTs and you will be able to trade them directly. You might even battle for ownership of websites and your Loot Places NFT will set the stage.
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="my-3">
+            Let the games begin.
+        </div>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-4 col-md-2">
+        <a href="https://etherscan.io/address/0x6c8cca9dbbfb8172415dfacf722d3a1289e00bc5#writeContract" target="_new">Contract</a>
+    </div>
+    <div class="col-4 col-md-2">
+        <a href="https://opensea.io/collection/loot-places-for-adventurers" target="_new">OpenSea</a>
+    </div>
+    <div class="col-4 col-md-2">
+        <a href="https://www.weblin.io" target="_new">weblin.io</a>
+    </div>
+    <div class="col-4 col-md-2">
+        <a href="https://twitter.com/LootPlaces" target="_new">@@LootPlaces</a>
+    </div>
+</div>
+
+<div class="row mt-5" data-masonry='{"percentPosition": true }'>
+    @{
+        ListGenerator cardsData = () => new List<Node> {
+    Node.From(new Dictionary<string, string> { ["Title"] = "Loot Place DAO", ["Text"] = "We believe in the values of cypherpunks, in web 3 identity, in the infinite garden metaverse and DAOs. We are working to allow all people holding a shared ownership in a Loot Place (for Adventurers) to organize into a DAO.", }),
+    Node.From(new Dictionary<string, string> { ["Title"] = "Frontier", ["Text"] = "As <a href='https://banklesshq.com/' target='_new'>Ryan</a> says: We are entering the Metaverse. This is the frontier and we are glad you're with us on the journey.", }),
+    Node.From(new Dictionary<string, string> { ["Title"] = "Metaverse Places", ["Text"] = "For the Metaverse to have a spatial dimension it needs places. There are virtual worlds and NFTs with pieces of virtual land. But the Web already consists of uncounted places visited by billions each day. The Web is a significant part of the Metaverse where people live and meet.", }),
+    Node.From(new Dictionary<string, string> { ["Title"] = "Howto", ["Text"] = "<ol><li>Go to the <a href='https://etherscan.io/address/0x6c8cca9dbbfb8172415dfacf722d3a1289e00bc5#writeContract' target='_new'>contract</a></li><li>Connect your wallet (e.g. Metamask)</li><li>Open the <b>claim</b> method</li><li>Enter the nominal charge of 0.005 ETH</li><li>Enter a free token ID (you will have to guess or use the 'tokenByIndex' method to find free ones)</li><li>Press <b>Write</b></li><li>Authorize the transaction in your wallet</li></ol>", }),
+    Node.From(new Dictionary<string, string> { ["Title"] = "Avatars on Web Pages", ["Text"] = "<a href='https://www.weblin.io/' target='_new'>Weblin</a> is your web avatar. A browser extension that lets you meet people on web pages.", }),
+    Node.From(new Dictionary<string, string> { ["Title"] = "#few", ["Text"] = "It is still early. Few understand.", }),
+    };
+    }
+    @{
+        var cardsCnt = 0;
+    }
+    @foreach (var card in Model.I18n.List(path: "Cards", data: cardsData))
+    {
+        cardsCnt++;
+        <div class="col-sm-6 col-lg-4 mb-4">
+            <div class="card">
+                @if (@card["ImgSrc"].String != "")
+                {
+                    <img class="card-img-top" src="~/images/site/@card["ImgSrc"]" data-toggle="modal" data-target="#iCard@(cardsCnt)">
+                    <div id="iCard@(cardsCnt)" class="modal fade" tabindex="-1" role="dialog">
+                        <div class="modal-dialog modal-dialog-centered" style="max-width: 800px;">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <img src="~/images/site/@card["ImgSrc"]" alt="@card["ImgAlt"]" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div class="card-body">
+                    <h5 class="card-title">@card["Title"]</h5>
+                    <p>@Html.Raw(card["Text"])</p>
+                    @if (@card["ButtonText"].String != "")
+                    {
+                        <button class="btn btn-primary" onclick="@card["ButtonOnClick"]">@card["ButtonText"]</button>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+<script async src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous"></script>
+
+<!-- Fixed to 1.6.1 because Metamask displays warning "This gas fee has been suggested by webin.io...": -->
+<script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.6.1/dist/web3.min.js"></script>
+
+<script>
+
+    // Base class for failures, successes, information...:
+    // Provides a trace by extending Error.
+    /*abstract*/ class InternalEvent extends Error {
+
+        constructor(channel, src, msg, userMsg, originalEvent, ...data) {
+            super(src + ': ' + msg);
+            this.name = channel;
+            if (originalEvent !== undefined && originalEvent !== null) {
+                data.push('originalEvent', originalEvent);
+            }
+            if (userMsg !== undefined && userMsg !== null) {
+                this.userMsg = userMsg;
+            }
+            this.data = data;
+        }
+
+        isFinal() {
+            return false;
+        }
+
+        cssCls() {
+            return 'msgDebug';
+        }
+
+    }
+
+    // Base class for the last event caused by a user action:
+    /*abstract*/ class InternalFinalEvent extends InternalEvent {
+
+        isFinal() {
+            return true;
+        }
+
+    }
+
+    // User-action-finalizing error:
+    class InternalError extends InternalFinalEvent {
+
+        constructor(src, msg, userMsg, originalEvent, ...data) {
+            super('Error', src, msg, userMsg, originalEvent, ...data);
+        }
+
+        cssCls() {
+            return 'msgError';
+        }
+
+    }
+
+    // User-action-finalizing warning:
+    class InternalWarning extends InternalFinalEvent {
+
+        constructor(src, msg, userMsg, originalEvent, ...data) {
+            super('Warning', src, msg, userMsg, originalEvent, ...data);
+        }
+
+        cssCls() {
+            return 'msgWarning';
+        }
+
+    }
+
+    // User-action-finalizing success:
+    class InternalSuccess extends InternalFinalEvent {
+
+        constructor(src, msg, userMsg, originalEvent, ...data) {
+            super('Success', src, msg, userMsg, originalEvent, ...data);
+        }
+
+        cssCls() {
+            return 'msgSuccess';
+        }
+
+    }
+
+    // Thrown for non-finalizing action abort because of concurrent event handling:
+    class InternalHandover extends InternalFinalEvent {
+
+        constructor(src, msg, userMsg, originalEvent, ...data) {
+            super('Handover', src, msg, userMsg, originalEvent, ...data);
+        }
+
+    }
+
+    // Intermediate user info:
+    class InternalInfo extends InternalEvent {
+
+        constructor(src, msg, userMsg, originalEvent, ...data) {
+            super('Info', src, msg, userMsg, originalEvent, ...data);
+        }
+
+        cssCls() {
+            return 'msgInfo';
+        }
+
+    }
+
+    // Intermediate debug info:
+    class InternalDebug extends InternalEvent {
+
+        constructor(src, msg, userMsg, originalEvent, ...data) {
+            super('Debug', src, msg, userMsg, originalEvent, ...data);
+        }
+
+        cssCls() {
+            return 'msgDebug';
+        }
+
+    }
+
+    function textHtmlEscape(text) {
+        return new Option(text).innerHTML;
+    }
+
+    function textUrlEscape(text) {
+        return encodeURIComponent(text);
+    }
+
+    class LootPlacesClaimController {
+
+        contracts = {
+            main: {
+                address: '0x6c8ccA9dBbfB8172415DFACf722D3A1289e00BC5',
+                transactionUrlPrefix: 'https://etherscan.io/tx/',
+                abi: [
+                    {
+                        name: "ownerOf",
+                        payable: false,
+                        constant: true,
+                        stateMutability: "view",
+                        type: "function",
+                        inputs: [{ internalType: "uint256", name: "tokenId", type: "uint256" }],
+                        outputs: [{ internalType: "address", name: "", type: "address" }],
+                    },
+                    {
+                        name: "claim",
+                        payable: true,
+                        constant: false,
+                        stateMutability: "payable",
+                        type: "function",
+                        inputs: [{ internalType: "uint256", name: "tokenId", type: "uint256" }],
+                        outputs: [],
+                    },
+                ],
+                tokenFreeMsg: 'ERC721: owner query for nonexistent token',
+                tokenIdMin: 1,
+                tokenIdMax: 7840,
+                tokensUsed: undefined,
+                value: 5e15,
+                gasLimitFactor: 1.1, // >= 1.0. factor to account for gas costs inflation.
+            },
+            rinkeby: {
+                address: '0xf83E58259607E29E0c69d199C856D9900EAEA885',
+                transactionUrlPrefix: 'https://rinkeby.etherscan.io/tx/',
+                abi: [
+                    {
+                        name: "ownerOf",
+                        payable: false,
+                        constant: true,
+                        stateMutability: "view",
+                        type: "function",
+                        inputs: [{internalType: "uint256", name: "tokenId", type: "uint256"}],
+                        outputs: [{internalType: "address", name: "", type: "address"}],
+                    },
+                    {
+                        name: "claim",
+                        payable: true,
+                        constant: false,
+                        stateMutability: "payable",
+                        type: "function",
+                        inputs: [{internalType: "uint256", name: "tokenId", type: "uint256"}],
+                        outputs: [],
+                    },
+                ],
+                tokenFreeMsg: 'ERC721: owner query for nonexistent token',
+                tokenIdMin: 1,
+                tokenIdMax: 7840,
+                tokensUsed: undefined,
+                value: 5e15,
+                gasLimitFactor: 1.1, // >= 1.0. factor to account for gas burning inflation.
+            },
+        };
+
+        msgCssClasses = {
+            msgNone: 'resultMsg alert alert-info',
+            msgError: 'resultMsg alert alert-danger',
+            msgWarning: 'resultMsg alert alert-warning',
+            msgSuccess: 'resultMsg alert alert-success',
+            msgInfo: 'resultMsg alert alert-info',
+            msgDebug: 'resultMsg alert alert-secondary',
+        };
+
+        // {string msgId: string msgText}:
+        texts = @Html.Raw(Model.I18n.Json(path: "claim"));
+
+        startTimestamp = undefined; // number [ms]
+
+        actionName = undefined; // string
+        actionBox = undefined; // HTMLElement
+        actionBtn = undefined; // HTMLElement
+        actionSpinner = undefined; // HTMLElement
+
+        isFirstClaim = true;
+        // 'start'|'noExt'|'ready'|'preparing'|'sendingTransaction'|'waitingForConfirmation'|'failure'|'success':
+        workflowStep = 'start';
+        workflowId = undefined; // Used to detect concurrent event handling takeover.
+
+        web3ExtPresent = false; // boolean
+        web3ExtConnected = false; // boolean
+        web3 = undefined; // Web3
+        accounts = undefined; // string[]
+        account = undefined; // string
+        network = undefined; // string
+        currentBlockNumber = undefined; // number
+        contract = undefined; // this.contracts[this.network]
+        web3Contract = undefined; // Web3.eth.Contract
+        tokenId = undefined; // number
+        transactionHash = undefined; // string; Set while waiting for confirmation.
+        transactionStartBlock = undefined; // number; Set when transaction has been sent.
+        transactionLastCheckBlock = undefined; // number
+
+        constructor(actionName) {
+            this.actionName = actionName;
+            if (document.readyState !== "loading") {
+                this.onDocReady();
+            } else {
+                document.addEventListener("DOMContentLoaded", this.onDocReady.bind(this));
+            }
+        }
+
+        onDocReady() {
+            this.startTimestamp = Date.now();
+            this.actionBox = document.getElementById(this.actionName + 'Box');
+            this.actionBtn = this.actionBox.querySelector('.btn');
+            this.actionBtn.addEventListener('click', this.onStartBtnClick.bind(this));
+            this.actionSpinner = this.actionBox.querySelector('.spinner');
+            this.doWeb3Update();
+        }
+
+        //------------------------------------------------------------------
+        // Web3.js events
+
+        doWeb3Update() {
+            this.detectWeb3ExtPresence();
+            if (this.web3ExtConnected) {
+                this.web3.eth.getBlockNumber()
+                    .then(blockNumber => {
+                        this.currentBlockNumber = blockNumber;
+                    }).catch(error => {
+                        this.onInternalEvent(new InternalDebug(
+                            'LootPlacesClaimController.doWeb3Update',
+                            'this.web3.eth.getBlockNumber failed!',
+                            undefined, error))
+                    }).finally(() => {
+                        this.sheduleNextDoWeb3Update();
+                    });
+            } else {
+                this.sheduleNextDoWeb3Update();
+            }
+        }
+
+        sheduleNextDoWeb3Update() {
+            window.setTimeout(this.doWeb3Update.bind(this), 1000);
+        }
+
+        detectWeb3ExtPresence() {
+            this.web3ExtPresent = window.ethereum !== undefined;
+            this.web3ExtConnected = this.web3ExtConnected && this.web3ExtPresent;
+            if (this.web3ExtPresent) {
+                this.web3 = new Web3(window.ethereum);
+                if (this.workflowStep === 'start'
+                || this.workflowStep === 'noExt') {
+                    this.clearUserMsg();
+                    this.setWorkflowStep('ready');
+                }
+            } else {
+                this.web3 = undefined;
+                switch (this.workflowStep) {
+                    case 'start':
+                        this.onInternalEvent(new InternalError(
+                            'LootPlacesClaimController.onDocReady',
+                            'Wallet extension not found!',
+                            'walletExtensionNotFound'));
+                    break;
+                    case 'noExt':
+                        // Nothing changed.
+                    break;
+                    default:
+                        this.onInternalEvent(new InternalError(
+                            'LootPlacesClaimController.onDocReady',
+                            'Wallet extension gone away!',
+                            'walletExtensionDisappeared'));
+                    break;
+                }
+                this.workflowId = undefined;
+                this.setWorkflowStep('noExt');
+            }
+        }
+
+        //------------------------------------------------------------------
+        // User action
+
+        onStartBtnClick(event) {
+            if (this.workflowStep !== 'ready') {
+                return;
+            }
+            this.setWorkflowStep('preparing');
+            this.clearUserMsg();
+            const workflowId = Math.random();
+            this.workflowId = workflowId;
+            (async () => {
+                await this.connectWallet(workflowId);
+                this.detectConcurrentHandler(workflowId);
+                await this.findFreeNft(workflowId);
+                this.detectConcurrentHandler(workflowId);
+                await this.findGasLimit(workflowId);
+                this.detectConcurrentHandler(workflowId);
+                this.setWorkflowStep('sendingTransaction');
+                await this.claimNft(workflowId);
+                this.detectConcurrentHandler(workflowId);
+                this.setWorkflowStep('waitingForConfirmation');
+                this.confirmClaim(workflowId);
+            })().catch(error => {
+                this.onClaimFailure(workflowId, error);
+            });
+        }
+
+        onClaimFailure(workflowId, error) {
+            if (workflowId === this.workflowId) {
+                this.workflowId = undefined;
+                this.onInternalEvent(error);
+            }
+        }
+
+        onClaimSuccess(workflowId) {
+            if (workflowId === this.workflowId) {
+                this.workflowId = undefined;
+                this.contract.tokensClaimed.push(this.tokenId);
+                const userMsg = ['html', this.makeUserSuccessMsgHtml()];
+                this.onInternalEvent(new InternalSuccess(
+                    'lootPlacesClaimController.onStartBtnClick', 'Token claimed successfully.',
+                    userMsg, undefined));
+            }
+        }
+
+        makeUserSuccessMsgHtml() {
+            let userMsg = this.texts['success'];
+            if (this.transactionStartBlock) {
+                const blocks = this.currentBlockNumber - this.transactionStartBlock;
+                if (blocks > 0) {
+                    userMsg = this.texts[blocks === 1 ? 'successAfterS' : 'successAfter'];
+                    userMsg = userMsg.replace('{blocks}', blocks.toString());
+                }
+            }
+            const msgHtml = textHtmlEscape(userMsg);
+            const transHash = this.transactionHash;
+            const transHashEsc = textUrlEscape(transHash);
+            const linkUrlPrefixEsc = this.contract.transactionUrlPrefix;
+            const linkUrlEsc = linkUrlPrefixEsc + transHashEsc;
+            const linkTarget = 'LootPlacesTransaction' + transHashEsc;
+            const linkLabel = this.texts['etherscanLabel'];
+            const linkLabelHtml = textHtmlEscape(linkLabel);
+            return msgHtml + '<br>'
+                + '<a'
+                + ' href="' + linkUrlEsc + '"'
+                + ' target="' + linkTarget + '"'
+                + '>' + linkLabelHtml + '</a>';
+        }
+
+        async connectWallet(workflowId) {
+            this.detectConcurrentHandler(workflowId);
+            const web3 = this.web3;
+            this.onInternalEvent(new InternalInfo(
+                'lootPlacesClaimController.connectWallet',
+                'Connecting to wallet extension...',
+                'walletExtensionConnecting'));
+            try {
+                await window.ethereum.request(
+                    { method: 'eth_requestAccounts' });
+                this.detectConcurrentHandler(workflowId);
+            } catch (error) {
+                if (error.code === 4001) {
+                    throw new InternalWarning(
+                        'lootPlacesClaimController.connectWallet',
+                        'Wallet extension connection canceled by user!',
+                        'userCanceled',
+                        error);
+                }
+                throw new InternalError(
+                    'lootPlacesClaimController.connectWallet',
+                    'Wallet extension connection failed!',
+                    'walletExtensionConnectionFailed',
+                    error);
+            }
+            this.accounts = await web3.eth.getAccounts();
+            this.network = await web3.eth.net.getNetworkType();
+            const contract = this.contracts[this.network];
+            this.contract = contract;
+            if (this.accounts.length == 0) {
+                throw new InternalError(
+                    'lootPlacesClaimController.connectWallet',
+                    'Web3 returned no account!',
+                    'walletExtensionNotFound',
+                    undefined);
+            }
+            this.account = this.accounts[0].toLowerCase();
+            if (this.contract === undefined) {
+                throw new InternalError(
+                    'lootPlacesClaimController.connectWallet',
+                    'Web3 returned unsupported chain!',
+                    'walletChainNotsupported',
+                    undefined);
+            }
+            contract.address = contract.address.toLowerCase();
+            this.web3Contract = new web3.eth.Contract(
+                contract.abi, contract.address);
+            this.web3ExtConnected = true;
+        }
+
+        async findFreeNft(workflowId) {
+            this.detectConcurrentHandler(workflowId);
+            this.onInternalEvent(new InternalInfo(
+                'lootPlacesClaimController.findFreeNft',
+                'Finding a free token ID to claim...',
+                'tokenFindFree'));
+            if (this.contract.tokensClaimed === undefined) {
+                this.contract.tokensClaimed = []; // unordered number[]
+            }
+            let tokenId = undefined;
+            if (tokenId === undefined) {
+                tokenId = await this.findRandomFreeNft(workflowId, 10);
+                this.detectConcurrentHandler(workflowId);
+            }
+            if (tokenId === undefined) {
+                const reverse = Math.round(Math.random()) !== 0;
+                tokenId = await this.findFirstFreeNft(workflowId, reverse);
+                this.detectConcurrentHandler(workflowId);
+            }
+            if (tokenId === undefined) {
+                throw new InternalError(
+                    'lootPlacesClaimController.claimNft',
+                    'No free token ID left!', 'tokenNoFreeLeft');
+            }
+            this.tokenId = tokenId;
+        }
+
+        async findGasLimit(workflowId) {
+            this.detectConcurrentHandler(workflowId);
+            this.onInternalEvent(new InternalInfo(
+                'lootPlacesClaimController.findGasLimit', 'Calculating gas limit for claim transaction...'));
+            const options = {
+                from: this.account,
+                value: this.contract.value,
+            };
+            const gasLimitFactor = this.contract.gasLimitFactor;
+            try {
+                const contractApi = this.web3Contract.methods;
+                const transaction = contractApi.claim(this.tokenId);
+                const gasLimit = await transaction.estimateGas(options);
+                this.detectConcurrentHandler(workflowId);
+                const gasLimitAdjusted = Math.ceil(gasLimit * gasLimitFactor);
+                this.contract.gasLimit = gasLimitAdjusted;
+                this.onInternalEvent(new InternalInfo(
+                    'lootPlacesClaimController.findGasLimit', 'On gas limit retrieved.',
+                    undefined, undefined, 'gasLimit', gasLimit, 'gasLimitAdjusted', gasLimitAdjusted));
+            } catch (error) {
+                if (error.code === -32000) {
+                    throw new InternalError(
+                        'lootPlacesClaimController.findGasLimit', 'Insufficient funds for value and gas!',
+                        'insufficientFunds', error, 'options', options);
+                }
+                throw new InternalError(
+                    'lootPlacesClaimController.findGasLimit', 'Gas limit calculation failed!',
+                    'unknownError', error, 'options', options);
+            }
+        }
+
+        async claimNft(workflowId) {
+            this.detectConcurrentHandler(workflowId);
+            this.onInternalEvent(new InternalInfo(
+                'lootPlacesClaimController.claimNft',
+                'Claiming token...',
+                'tokenClaiming'));
+            const options = {
+                from: this.account,
+                value: this.contract.value,
+                gas: this.contract.gasLimit,
+                maxPriorityFeePerGas: null,
+                maxFeePerGas: null,
+            };
+            const contractApi = this.web3Contract.methods;
+            const transaction = contractApi.claim(this.tokenId);
+            const transactionPromise = transaction.send(options);
+            const resultPromise = new Promise(resolve => {
+                transactionPromise.once('transactionHash', (hash) => {
+                    this.detectConcurrentHandler(workflowId);
+                    hash = hash.toLowerCase();
+                    this.transactionHash = hash;
+                    resolve();
+                });
+            });
+            transactionPromise.catch(error => {
+                if (error.code === 4001) {
+                    this.onClaimFailure(workflowId, new InternalWarning(
+                        'lootPlacesClaimController.claimNft', 'Claim canceled by user!',
+                        'userCanceled', error, 'options', options));
+                }
+                if (error instanceof Error
+                && error.message.includes('Transaction was not mined within 50 blocks')) {
+                    this.onInternalEvent(new InternalDebug(
+                        'lootPlacesClaimController.claimNft',
+                        'Web3 library gave up waiting for confirmation.'
+                        + ' Not an error. No user message rewquired.'));
+                    return;
+                }
+                this.onClaimFailure(workflowId, new InternalError(
+                    'lootPlacesClaimController.getNftOwnerAddress', 'Token claim failed!',
+                    'unknownError', error, 'options', options));
+            });
+            return resultPromise;
+        }
+
+        confirmClaim(workflowId) {
+            this.detectConcurrentHandler(workflowId);
+            const hash = this.transactionHash;
+            this.onInternalEvent(new InternalInfo(
+                'lootPlacesClaimController.confirmClaim', 'On event transactionHash.',
+                'tokenAwaitingConfirmation', undefined, 'hash', hash));
+            this.transactionLastCheckBlock = this.currentBlockNumber;
+            const checkFun = () => {
+                if (workflowId !== this.workflowId) {
+                    return;
+                }
+                if (!this.transactionStartBlock) {
+                    this.transactionStartBlock = this.currentBlockNumber;
+                }
+                if (!this.transactionLastCheckBlock
+                || this.transactionLastCheckBlock !== this.currentBlockNumber) {
+                    this.getNftOwnerAddress(this.tokenId).then(ownerAccount => {
+                        if (ownerAccount === this.account) {
+                            this.onClaimSuccess(workflowId);
+                        } else {
+                            this.transactionLastCheckBlock = this.currentBlockNumber;
+                            this.updateClaimConfirmUserMsg();
+                            window.setTimeout(checkFun, 1000);
+                        }
+                    }).catch(error => this.onClaimFailure(workflowId, error));
+                } else {
+                    window.setTimeout(checkFun, 1000);
+                }
+            };
+            checkFun();
+        }
+
+        updateClaimConfirmUserMsg() {
+            if (!this.transactionStartBlock) {
+                return;
+            }
+            const blocks = this.currentBlockNumber - this.transactionStartBlock;
+            if (blocks < 1) {
+                return;
+            }
+            let userMsg;
+            if (blocks === 1) {
+                userMsg = this.texts['tokenAwaitingConfirmationSinceS'];
+            } else {
+                userMsg = this.texts['tokenAwaitingConfirmationSince'];
+            }
+            userMsg = userMsg.replace('{blocks}', blocks.toString());
+            this.onInternalEvent(new InternalInfo(
+                'lootPlacesClaimController.confirmClaim', 'On event transactionHash.',
+                ['text', userMsg], undefined));
+        }
+
+        //------------------------------------------------------------------
+        // Token discovery and information
+
+        async findRandomFreeNft(workflowId, tryCount) {
+            this.detectConcurrentHandler(workflowId);
+            const contract = this.contract;
+            const tokensClaimed = contract.tokensClaimed;
+            const tokenIdMin = contract.tokenIdMin;
+            const tokenIdMax = contract.tokenIdMax;
+            for (let i = 1; i <= tryCount; i++) {
+                let tokenIndexMax = tokenIdMax - tokenIdMin;
+                let tokenIndex = Math.round(Math.random() * tokenIndexMax);
+                let tokenId = tokenIdMin + tokenIndex;
+                if (tokensClaimed.includes(tokenId)) {
+                    continue;
+                }
+                let owner = await this.getNftOwnerAddress(tokenId);
+                this.detectConcurrentHandler(workflowId);
+                if (owner === undefined) {
+                    this.onInternalEvent(new InternalDebug(
+                        'lootPlacesClaimController.findRandomFreeNft',
+                        'Found free token ID!', undefined, undefined,
+                        'tokenId', tokenId));
+                    return tokenId;
+                }
+                tokensClaimed.push(tokenId);
+            }
+            this.onInternalEvent(new InternalDebug(
+                'lootPlacesClaimController.findRandomFreeNft',
+                'No free token ID found!', undefined, undefined,
+                'tokenIdMin', tokenIdMin, 'tokenIdMax', tokenIdMax,
+                'tryCount', tryCount));
+            return undefined;
+        }
+
+        async findFirstFreeNft(workflowId, reverse) {
+            this.detectConcurrentHandler(workflowId);
+            const contract = this.contract;
+            const tokensClaimed = contract.tokensClaimed;
+            const tokenIdMin = contract.tokenIdMin;
+            const tokenIdMax = contract.tokenIdMax;
+            let tokenId = start;
+            let tokenIdStep;
+            if (reverse) {
+                tokenId = tokenIdMax;
+                tokenIdStep = -1;
+            } else {
+                tokenId = tokenIdMin;
+                tokenIdStep = 1;
+            }
+            const rangeLength = Math.abs(tokenIdMax - tokenIdMin) + 1;
+            for (let i = 0; i < rangeLength; i++) {
+                if (tokensClaimed.includes(tokenId)) {
+                    continue;
+                }
+                let owner = await this.getNftOwnerAddress(tokenId);
+                this.detectConcurrentHandler(workflowId);
+                if (owner === undefined) {
+                    this.onInternalEvent(new InternalDebug(
+                        'lootPlacesClaimController.findFirstFreeNft',
+                        'Found free token ID!', undefined, undefined,
+                        'tokenId', tokenId));
+                    return tokenId;
+                }
+                tokensClaimed.push(tokenId);
+                tokenId += tokenIdStep;
+            }
+            this.onInternalEvent(new InternalDebug(
+                'lootPlacesClaimController.findFirstFreeNft',
+                'No free token ID found!', undefined, undefined,
+                'tokenIdMin', tokenIdMin, 'tokenIdMax', tokenIdMax,
+                'reverse', reverse));
+            return undefined;
+        }
+
+        async getNftOwnerAddress(tokenId) {
+            let owner = undefined;
+            try {
+                const options = {from: this.account};
+                const contractApi = this.web3Contract.methods;
+                owner = await contractApi.ownerOf(tokenId).call(options);
+            } catch (error) {
+                if (error.message.includes(this.contract.tokenFreeMsg)) {
+                    // Token doesn't exist.
+                    return undefined;
+                }
+                throw new InternalError(
+                    'lootPlacesClaimController.getNftOwnerAddress',
+                    'ownerOf failed!', undefined, error, 'tokenId', tokenId);
+            }
+            return owner.toLowerCase();
+        }
+
+        //-----------------------------------------------------------------
+        // Internal event handling and logging
+
+        detectConcurrentHandler(workflowId) {
+            if (workflowId !== this.workflowId) {
+                throw new InternalHandover(
+                    'lootPlacesClaimController.checkWorkflowId',
+                    'Concurrent event handling detected - terminating current execution flow.'
+                    + ' Not an error. No user message rewquired.');
+            }
+        }
+
+        onInternalEvent(e) {
+            if (!(e instanceof InternalEvent)) {
+                e = new InternalError(
+                    'lootPlacesClaimController.onInternalEvent',
+                    'e is not an InternalEvent!', undefined, e);
+            }
+            this.logInternalEvent(e);
+            this.showUserMsg(e);
+
+            if (e.isFinal()) {
+                switch (this.workflowStep) {
+                    case 'start':
+                    case 'noExt':
+                    case 'ready':
+                        // Nothing to do if not started any action.
+                    break;
+                    default:
+                        // React to final action-terminating event:
+                        if (e instanceof InternalSuccess) {
+                            this.isFirstClaim = false;
+                            this.setWorkflowStep('success');
+                        } else {
+                            this.setWorkflowStep('failure');
+                        }
+                        window.setTimeout(this.onAfterFinalInternalEvent.bind(this), 1000);
+                    break;
+                }
+            }
+        }
+
+        onAfterFinalInternalEvent() {
+            switch (this.workflowStep) {
+                case 'failure':
+                case 'success':
+                    this.setWorkflowStep('ready'); // Assume readyness.
+                    this.detectWeb3ExtPresence(); // Autocorrect if not ready.
+                break;
+            }
+        }
+
+        logInternalEvent(e) {
+            const data = [];
+            const nowOffset = (Date.now() - this.startTimestamp) / 1000;
+            data.push(nowOffset.toString() + 's');
+            data.push(e);
+            if (e.data !== undefined) {
+                data.push(...e.data);
+            }
+            data.push('LootPlacesClaimController', this);
+            console.log(...data);
+        }
+
+        setWorkflowStep(step) {
+            this.workflowStep = step;
+            if (step === 'ready') {
+                this.enableBtn();
+            } else {
+                this.disableBtn();
+            }
+            switch (step) {
+                case 'start':
+                case 'noExt':
+                case 'ready':
+                case 'success':
+                case 'failure':
+                    this.disableSpinner();
+                break;
+                default:
+                    this.enableSpinner();
+                break;
+            }
+        }
+
+        //------------------------------------------------------------------
+        // GUI helpers
+
+        enableBtn() {
+            this.actionBtn.removeAttribute('disabled');
+            if (!this.isFirstClaim) {
+                const elem = this.actionBtn.querySelector('.caption');
+                elem.innerText = this.texts.startBtnCaptionRepeat;
+            }
+        }
+
+        disableBtn() {
+            this.actionBtn.setAttribute('disabled', '');
+        }
+
+        enableSpinner() {
+            this.actionSpinner.classList.remove('d-none');
+        }
+
+        disableSpinner() {
+            this.actionSpinner.classList.add('d-none');
+        }
+
+        showUserMsg(e) {
+            let msg = e.userMsg;
+            if (!msg && (e instanceof InternalError)) {
+                msg = ['textid', 'unknownError'];
+            }
+            if (!msg) {
+                return;
+            }
+            if (!(msg instanceof Array)) {
+                msg = ['textid', msg];
+            }
+
+            let html = '';
+            let type = String(msg[0]);
+            let content = String(msg[1]);
+            switch (type) {
+                case 'textid':
+                    html = textHtmlEscape(this.texts[content] ?? '');
+                break;
+                default:
+                case 'text':
+                    html = textHtmlEscape(content);
+                break;
+                case 'html':
+                    html = content;
+                break;
+            }
+
+            if (html !== '') {
+                this.setUserMsg(html, this.msgCssClasses[e.cssCls()]);
+            }
+        }
+
+        clearUserMsg() {
+            this.setUserMsg('', this.msgCssClasses.msgNone);
+        }
+
+        setUserMsg(html, cssCls) {
+            const actionBox = this.actionBox;
+            actionBox.setAttribute('class', cssCls);
+            const infoTextElem = actionBox.querySelector('.infoText');
+            infoTextElem.innerHTML = html;
+            if (html === '') {
+                infoTextElem.classList.add('d-none');
+            } else {
+                infoTextElem.classList.remove('d-none');
+            }
+        }
+
+    }
+
+    const claimController = new LootPlacesClaimController('iClaim');
+
+</script>
+}
