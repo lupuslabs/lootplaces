@@ -35,23 +35,23 @@ namespace LootPlacesWeb
 
         public ImageController(MyApp app) : base(app) { }
 
-        //[HttpGet]
-        //[Route("[controller]")]
-        //public ActionResult Get(string domain, string size)
-        //{
-        //    domain ??= GetProperty(_domainsSet);
-        //    var nSize = int.Parse(size ?? "400");
+        [HttpGet]
+        [Route("[controller]")]
+        public ActionResult Get(string domain, string size)
+        {
+            domain ??= GetProperty(_domainsSet);
+            var nSize = int.Parse(size ?? "400");
 
-        //    var s = "<!DOCTYPE html>";
-        //    s += "<html lang='en'><head><title>LootPlacesImage</title></head><body>";
-        //    Don.t = () => {
-        //        s += "<img src='data:image/svg+xml;base64," + Base64.Encode(GetSvg(domain)) + "' style='width:" + nSize + "px; height:" + nSize + "px' />";
-        //    };
-        //    s += "<img src='data:image/png;base64," + Base64.Encode(GetPng(domain)) + "' style='width:" + nSize + "px; height:" + nSize + "px' />";
-        //    s += "</body>";
-        //    s = s.Replace("'", "\"");
-        //    return Content(s, "text/html");
-        //}
+            var s = "<!DOCTYPE html>";
+            s += "<html lang='en'><head><title>LootPlacesImage</title></head><body>";
+            Don.t = () => {
+                s += "<img src='data:image/svg+xml;base64," + Base64.Encode(GetSvg(domain)) + "' style='width:" + nSize + "px; height:" + nSize + "px' />";
+            };
+            s += "<img src='data:image/png;base64," + Base64.Encode(GetPng(domain)) + "' style='width:" + nSize + "px; height:" + nSize + "px' />";
+            s += "</body>";
+            s = s.Replace("'", "\"");
+            return Content(s, "text/html");
+        }
 
         [HttpGet]
         [Route("[controller]/[action]")]
