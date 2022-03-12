@@ -9,8 +9,9 @@ namespace LootPlacesWeb
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            builder.Services.AddRazorPages()
-                .AddRazorRuntimeCompilation();
+            builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
+            builder.Services.AddControllers();
+            builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
             builder.Services.AddSingleton(new MyApp { });
 
@@ -35,7 +36,10 @@ namespace LootPlacesWeb
 
             app.UseAuthorization();
 
-            app.MapRazorPages();
+            app.UseEndpoints(endpoints => {
+                endpoints.MapRazorPages();
+                endpoints.MapControllers();
+            });
 
             app.Run();
         }
