@@ -117,8 +117,13 @@ namespace LootPlacesWeb
         private byte[] GetPng(string domain)
         {
             var svgData = GetSvg(domain);
+            return Svg2Png(svgData);
+        }
+
+        private byte[] Svg2Png(string svgData)
+        {
             using var inStream = new MemoryStream(Encoding.UTF8.GetBytes(svgData ?? ""));
-            var svg = new /*SkiaSharp.Extended.Svg.*/SKSvg();
+            var svg = new SKSvg();
             svg.Load(inStream);
             if (svg.Drawable == null) throw new Exception("svg.Load failed");
 
