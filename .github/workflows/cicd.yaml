@@ -44,5 +44,5 @@ jobs:
             docker image pull wolfspelz/lootplacesweb
             docker container stop lootplacesweb-prod
             docker container prune -f
-            docker run -d --name lootplacesweb-prod --restart unless-stopped -p 127.0.0.1:5000:80 wolfspelz/lootplacesweb
+            docker run -d --name lootplacesweb-prod --restart unless-stopped -p 127.0.0.1:5000:80 -it wolfspelz/lootplacesweb
             docker image prune -f
