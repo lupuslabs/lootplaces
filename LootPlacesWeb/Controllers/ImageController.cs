@@ -1,7 +1,4 @@
-﻿using System.Text;
-using Microsoft.AspNetCore.Mvc;
-using SkiaSharp;
-using Svg.Skia;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace LootPlacesWeb
 {
@@ -117,28 +114,7 @@ namespace LootPlacesWeb
         private byte[] GetPng(string domain)
         {
             var svgData = GetSvg(domain);
-            return Svg2Png(svgData);
-        }
-
-        private byte[] Svg2Png(string svgData)
-        {
-            using var inStream = new MemoryStream(Encoding.UTF8.GetBytes(svgData ?? ""));
-            var svg = new SKSvg();
-            svg.Load(inStream);
-            if (svg.Drawable == null) throw new Exception("svg.Load failed");
-
-            var bitmap = new SKBitmap((int)svg.Drawable.Bounds.Width, (int)svg.Drawable.Bounds.Height);
-            var canvas = new SKCanvas(bitmap);
-            canvas.DrawPicture(svg.Picture);
-            canvas.Flush();
-            canvas.Save();
-
-            using var image = SKImage.FromBitmap(bitmap);
-            using var data = image.Encode(SKEncodedImageFormat.Png, 80);
-            using var svgStream = data.AsStream();
-            using var outStream = new MemoryStream();
-            svgStream.CopyTo(outStream);
-            return outStream.ToArray();
+            return SvgRenderer.ToPng(svgData);
         }
 
         private string GetProperty(string[] set)
