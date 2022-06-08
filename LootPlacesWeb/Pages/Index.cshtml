@@ -116,6 +116,7 @@
 <div class="row mt-5" data-masonry='{"percentPosition": true }'>
     @{
         ListGenerator cardsData = () => new List<Node> {
+    Node.From(new Dictionary<string, string> { ["Title"] = "Gitcoin", ["Text"] = "<a href='https://gitcoin.co/grants/4967/loot-places-for-gaming-on-web-pages' target='_new'>Please support us on gitcoin.</a>", }),
     Node.From(new Dictionary<string, string> { ["Title"] = "Loot Place DAO", ["Text"] = "We believe in the values of cypherpunks, in web 3 identity, in the infinite garden metaverse and DAOs. We are working to allow all people holding a shared ownership in a Loot Place (for Adventurers) to organize into a DAO.", }),
     Node.From(new Dictionary<string, string> { ["Title"] = "Frontier", ["Text"] = "As <a href='https://banklesshq.com/' target='_new'>Ryan</a> says: We are entering the Metaverse. This is the frontier and we are glad you're with us on the journey.", }),
     Node.From(new Dictionary<string, string> { ["Title"] = "Metaverse Places", ["Text"] = "For the Metaverse to have a spatial dimension it needs places. There are virtual worlds and NFTs with pieces of virtual land. But the Web already consists of uncounted places visited by billions each day. The Web is a significant part of the Metaverse where people live and meet.", }),
